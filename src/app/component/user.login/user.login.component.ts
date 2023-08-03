@@ -9,10 +9,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user.login.component.css']
 })
 export class UserLoginComponent{
-  user = {
+  public user = {
+    id: '',
     name: '', 
     password: '' 
   };
+  static user: any;
 constructor(private userService: UserService, private router:Router){}
 
   login() {
