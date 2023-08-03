@@ -1,0 +1,9 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="addTodo()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Email address</label>
+      <input for="title" type="text" class="form-control" id="title" name="title" [(ngModel)]="newTodo.title">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

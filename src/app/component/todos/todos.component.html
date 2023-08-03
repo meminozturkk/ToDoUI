@@ -1,0 +1,27 @@
+
+<div class="container"> 
+    <h1>Todo List</h1>
+<table class="table table-dark table-striped">
+    
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Create Date</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Priority</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let todo of todos">
+            <td>{{todo.title}}</td>
+            <td>{{todo.detail}}</td>
+            <td>{{todo.createDate}}</td>
+            <td>{{todo.isCompleted}}</td>
+            <td>{{todo.priority}}</td>
+        </tr>
+        </tbody>
+   
+  </table>
+</div>  
+
