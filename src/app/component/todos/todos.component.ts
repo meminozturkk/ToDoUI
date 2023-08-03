@@ -10,10 +10,29 @@ export class TodosComponent implements OnInit {
 todos: Todo[] = []; 
 constructor(private todoService: TodoService) { }
 ngOnInit(): void {
-    this.todoService.getAllTodos().subscribe({
-      next: (todos) =>{
-        this.todos = todos;
-      }
-    })
+    this.getAllTodos();
+}
+getAllTodos(): void {
+  this.todoService.getAllTodos().subscribe({
+    next: (todos) =>{
+      this.todos = todos;
+    }
+  })
+}
+onCompletedChange(id: string, todo:Todo):void{
+  
+  todo.isCompleted = !todo.isCompleted;
+this.todoService.updateTodo(id, todo).subscribe({
+  next:(response) => {
+    this.getAllTodos();
+  }})
+}
+deleteTodo(id:string){
+  this.todoService.deleteTodo(id).subscribe({
+    next: (response) =>{
+      this.getAllTodos();
+    }
+  })
+
 }
 }
