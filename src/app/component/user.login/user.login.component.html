@@ -1,0 +1,37 @@
+<div class="container">
+  <head>
+   <meta charset="utf-8 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Signin Todo List</title>
+
+    <link href="" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <p></p>
+    <p></p>
+    <div class="mb-3">
+    <form #form="ngForm" (ngSubmit)="login()">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <p></p>
+      <label for="name" class="sr-only">Email address</label>
+      <p></p>
+      <input type="text" id="name" class="form-control" name="name" placeholder="Name" [(ngModel)]="user.name" required>
+      <p></p>
+      <label for="password" class="sr-only">Password</label>
+      <p></p>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy;2023 </p>
+    </form>
+</div>
+  </body>
+</div>

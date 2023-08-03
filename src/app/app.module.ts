@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodosComponent } from './component/todos/todos.component';
 import { AddtodosComponent } from './component/addtodos/addtodos.component';
+import { UserLoginComponent } from './component/user.login/user.login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    AddtodosComponent
+    AddtodosComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

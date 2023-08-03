@@ -2,10 +2,10 @@
     <form #form="ngForm" (ngSubmit)="addTodo()">
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input value="" for="title" type="text" class="form-control" id="title" name="title" [(ngModel)]="newTodo.title">
+      <input for="title" type="text" class="form-control" id="title" name="title" [(ngModel)]="newTodo.title" required>
     
         <label for="detail" class="form-label">Detail</label>
-        <input for="detail" type="text"  class="form-control" id="detail" name="detail" [(ngModel)]="newTodo.detail">
+        <input for="detail" type="text"  class="form-control" id="detail" name="detail" [(ngModel)]="newTodo.detail" required>
         
         <label for="detail" class="form-label">Priority</label>
     <select for="priority" class="form-select" id="priority" name="priority" [(ngModel)]="newTodo.priority">
