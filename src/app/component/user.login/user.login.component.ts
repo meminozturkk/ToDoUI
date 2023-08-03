@@ -19,8 +19,6 @@ constructor(private userService: UserService, private router:Router){}
     const { name, password } = this.user;
     this.userService.login(name, password).subscribe(
       () => {
-        // Login işlemi başarılıysa, burada yönlendirme yapabilirsiniz.
-        // Örneğin:
         
         console.log('Login successful!');
         this.router.navigate(['/todos']);

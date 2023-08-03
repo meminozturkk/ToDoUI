@@ -23,4 +23,15 @@ export class UserService {
       })
     );
   }
+  register(name: string, password: string): Observable<any> {
+
+    const userData = { name: name, password: password };
+    let registerUrl = this.baseUrl + '/api/user/register';
+    
+    return this.http.post(registerUrl, userData).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 }
