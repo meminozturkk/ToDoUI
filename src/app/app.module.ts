@@ -8,7 +8,9 @@ import { TodosComponent } from './component/todos/todos.component';
 import { AddtodosComponent } from './component/addtodos/addtodos.component';
 import { UserLoginComponent } from './component/user.login/user.login.component';
 import { RegisterComponent } from './component/register/register.component';
-
+import { TodoDetailComponent } from './component/todo-detail/todo-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,16 @@ import { RegisterComponent } from './component/register/register.component';
     AddtodosComponent,
     UserLoginComponent,
     RegisterComponent,
+    TodoDetailComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [],

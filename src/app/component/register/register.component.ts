@@ -20,7 +20,7 @@ export class RegisterComponent {
 
     this.userService.register(name, password).subscribe(
       () => {
-        console.log('Register successful!');
+        this.router.navigate(['login']);
       },
       (error) => {
         console.log('Register failed:', error);

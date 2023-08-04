@@ -2,8 +2,13 @@
     <form #form="ngForm" (ngSubmit)="addTodo()">
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input for="title" type="text" class="form-control" id="title" name="title" [(ngModel)]="newTodo.title" required title="Please enter your name">
-    
+      <input for="title" type="text" class="form-control" id="title" name="title"
+       [(ngModel)]="newTodo.title" required  #titleInput="ngModel">
+
+      <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched || onSubmitInvalid) " class="text-danger">
+        Title is required.
+      </div>
+
         <label for="detail" class="form-label">Detail</label>
         <input for="detail" type="text"  class="form-control" id="detail" name="detail" [(ngModel)]="newTodo.detail" >
         
@@ -15,5 +20,6 @@
     </select>
   </div>
     <button  type="submit"  class="btn btn-primary" >Submit</button>
+   
   </form>
 </div>

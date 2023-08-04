@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { PriorityType } from 'src/app/models/priority.enum';
 import { Todo } from 'src/app/models/todo.model';
+import { ErrorToastService } from 'src/app/services/error-toast.service';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -9,14 +12,19 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodosComponent implements OnInit {
 todos: Todo[] = []; 
-constructor(private todoService: TodoService) { }
+
+constructor(private errorToastService: ErrorToastService,private todoService: TodoService, private router:Router) { }
 ngOnInit(): void {
     this.getAllTodos();
 }
 getAllTodos(): void {
   this.todoService.getAllTodos().subscribe({
-    next: (todos) =>{
+    next: (todos) => {
       this.todos = todos;
+    },
+    error: (error) => {
+      
+      this.errorToastService.showError('You must Log in');
     }
   })
 }
@@ -34,6 +42,12 @@ deleteTodo(id:string){
       this.getAllTodos();
     }
   })
+}
+showDetails(id:string){
+  this.router.navigate(['/todoDetail']);
+}
 
+goToDetail(id: string): void {
+  this.router.navigate(['/todoDetail' , id]);
 }
 }

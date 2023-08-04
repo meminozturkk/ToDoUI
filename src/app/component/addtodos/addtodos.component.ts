@@ -5,6 +5,7 @@ import { TodoService } from 'src/app/services/todo.service';
 import { TodosComponent } from '../todos/todos.component';
 import { Router } from '@angular/router';
 import { UserLoginComponent } from '../user.login/user.login.component';
+import { ErrorToastService } from 'src/app/services/error-toast.service';
 
 
 
@@ -15,7 +16,7 @@ import { UserLoginComponent } from '../user.login/user.login.component';
 })
 export class AddtodosComponent {
   public priority:PriorityType;
-  constructor(private todoService: TodoService, private router:Router) {}
+  constructor(private errorToastService : ErrorToastService,private todoService: TodoService, private router:Router) {}
   todos : Todo[] = [];
   newTodo: Todo ={
     id :'',
@@ -30,13 +31,23 @@ export class AddtodosComponent {
 btnClick= function () {
     this.router.navigateByUrl('/todos');;
 };
+
+onSubmitInvalid: boolean = false;
 addTodo() {
+  if (this.newTodo.title.trim() === '') {
+    this.onSubmitInvalid = true;
+    return ;
+  }
   this.todoService.addTodo(this.newTodo).subscribe({
     next:(todo)=>{
      this.todoService.getAllTodos();
      this.btnClick();
+    },
+    error: (error) => {
+      
+      this.errorToastService.showError('You must Log in');
     }
   })
-  
+  this.onSubmitInvalid = false;
 }
 }

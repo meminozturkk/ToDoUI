@@ -1,0 +1,42 @@
+<div  class="container">
+<form #form="ngForm" (ngSubmit)="updateTodo(todo.id,todo)" class="row g-3">
+    <div class="col-md-6">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" value="{{todo.title}}" 
+      [(ngModel)]="todo.title" #titleInput="ngModel" required>
+      
+      <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched) " class="text-danger">
+        Title is required.
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <label for="title" class="form-label">Create Date</label>
+      <label type="text" class="form-control" >{{todo.createDate | date: 'yyyy-MM-dd HH:mm' }}</label>
+    </div>
+    <div class="col-12">
+      <label for="detail" class="form-label">Detail</label>
+      <input type="text" class="form-control" id="detail" name="detail" value="{{todo.detail}}" [(ngModel)]="todo.detail">
+    </div>
+    <div class="col-md-4">
+      <label for="priority" class="form-label">Priority</label>
+      <select id="priority" class="form-select" name="priority" [(ngModel)]="todo.priority">
+        <option selected>{{todo.priority}}</option>
+        <option *ngIf="!(todo.priority === 'Low')" value="Low">Low</option>
+        <option *ngIf="!(todo.priority === 'Medium')" value="Medium">Medium</option>
+        <option *ngIf="!(todo.priority === 'High')" value="High">High</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="isCompleted" name="isCompleted" [checked]="todo.isCompleted">
+        <label class="form-check-label" for="isCompleted">
+          Completed
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+</div>

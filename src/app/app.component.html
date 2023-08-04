@@ -16,8 +16,8 @@
           <a class="nav-link" [routerLink]="['register']">Register</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
+      <span  class="navbar-text">
+        <a class="nav-item" [routerLink]="['login']" (click)="logout()">Logout</a>
       </span>
     </div>
   </div>

@@ -34,4 +34,8 @@ export class UserService {
       })
     );
   }
+  logoutUser(): Observable<any> {
+    let logoutUserUrl = this.baseUrl + '/api/user/Logout';
+    return this.http.post<any>(logoutUserUrl, {});
+  }
 }
