@@ -39,6 +39,7 @@ this.todoService.updateTodo(id, todo).subscribe({
 deleteTodo(id:string){
   this.todoService.deleteTodo(id).subscribe({
     next: (response) =>{
+      this.errorToastService.showSuccess('Todo deleted successfully')
       this.getAllTodos();
     }
   })

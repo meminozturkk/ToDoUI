@@ -13,4 +13,10 @@ export class ErrorToastService {
       timeOut: 5000 
     });
   }
+  showSuccess(message: string): void {
+    this.toastr.success(message, 'Success', {
+      closeButton: true,
+      timeOut: 5000
+    });
+  }
 }

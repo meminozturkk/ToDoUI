@@ -24,7 +24,7 @@ export class RegisterComponent {
         this.router.navigate(['login']);
       },
       (error) => {
-        this.errorToastService.showError('There have been already this name account')
+        this.errorToastService.showError('Empty or There has been already this name account')
         console.log('Register failed:', error);
       }
     );

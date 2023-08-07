@@ -30,7 +30,7 @@ constructor(private userService: UserService, private router:Router, private err
       },
       (error) => {
         console.log('Login failed:', error);
-        this.errorToastService.showError('You must field your name and password')
+        this.errorToastService.showError('Wrong name or password')
       }
     );
 }
