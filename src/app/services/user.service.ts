@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements CanActivate {
 
   baseUrl: string= 'https://localhost:7143';
   constructor(private http: HttpClient, private router: Router) {}
@@ -23,6 +23,10 @@ export class UserService {
       })
     );
   }
+  isLoggedIn(): boolean {
+    const currentUser = localStorage.getItem('currentUser');
+    return !!currentUser;
+  }
   register(name: string, password: string): Observable<any> {
 
     const userData = { name: name, password: password };
@@ -36,6 +40,17 @@ export class UserService {
   }
   logoutUser(): Observable<any> {
     let logoutUserUrl = this.baseUrl + '/api/user/Logout';
+    localStorage.removeItem('currentUser');
     return this.http.post<any>(logoutUserUrl, {});
+  }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    
+    if (this.isLoggedIn()) {
+      return true;
+    } else {
+      return this.router.createUrlTree(['/login']);
+    }
   }
 }

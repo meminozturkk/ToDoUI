@@ -1,30 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['todos']">Todo List</a>
+    <a class="navbar-brand" *ngIf="isLoggedIn()" [routerLink]="['todos']">Todo List</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['todos']">Todos</a>
+          <a class="nav-link active" *ngIf="isLoggedIn()" aria-current="page" [routerLink]="['todos']">Todos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['login']" >Login</a>
+          <a class="nav-link" *ngIf="!isLoggedIn()" [routerLink]="['login']" >Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['register']">Register</a>
+          <a class="nav-link" *ngIf="!isLoggedIn()" [routerLink]="['register']">Register</a>
         </li>
       </ul>
-      <span  class="navbar-text">
-        <a class="nav-item" [routerLink]="['login']" (click)="logout()">Logout</a>
+      <span class="navbar-text">
+        <a class="nav-item" *ngIf="isLoggedIn()" [routerLink]="['login']" (click)="logout()">Logout</a>
       </span>
     </div>
   </div>
 </nav>
 
 <div class="container">
-    <button class="addButton" [routerLink]="['addtodos']">+</button>
+    <button *ngIf="isLoggedIn()" class="addButton" [routerLink]="['addtodos']">+</button>
   </div>
 
 <router-outlet></router-outlet>

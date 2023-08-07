@@ -5,6 +5,7 @@ import { AddtodosComponent } from './component/addtodos/addtodos.component';
 import { UserLoginComponent } from './component/user.login/user.login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { TodoDetailComponent } from './component/todo-detail/todo-detail.component';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
   {
@@ -13,11 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'todos',
-    component: TodosComponent
+    component: TodosComponent,
+    canActivate: [UserService]
   },
   {
     path: 'addtodos',
-    component: AddtodosComponent
+    component: AddtodosComponent,
+    canActivate: [UserService]
   },
   {
     path: 'login',
@@ -29,7 +32,8 @@ const routes: Routes = [
   },
   {
     path: 'todoDetail/:id',
-    component: TodoDetailComponent
+    component: TodoDetailComponent,
+    canActivate: [UserService]
   }
 ];
 

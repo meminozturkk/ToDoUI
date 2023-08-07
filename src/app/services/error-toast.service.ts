@@ -8,7 +8,7 @@ export class ErrorToastService {
   constructor(private toastr: ToastrService) { }
 
   showError(message: string): void {
-    this.toastr.error(message, 'Hata', {
+    this.toastr.error(message, 'Error', {
       closeButton: true,
       timeOut: 5000 
     });
