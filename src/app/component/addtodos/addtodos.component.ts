@@ -40,7 +40,6 @@ addTodo() {
   }
   this.todoService.addTodo(this.newTodo).subscribe({
     next:(todo)=>{
-     this.todoService.getAllTodos();
      this.btnClick();
     },
     error: (error) => {
